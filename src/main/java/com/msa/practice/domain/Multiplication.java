@@ -12,12 +12,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode
-public final class Multiplication {
+public record Multiplication(int factorA,
+                             int factorB) {
 
-    private final int factorA;
-    private final int factorB;
-
-    Multiplication() {
-        this(0, 0);
-    }
 }

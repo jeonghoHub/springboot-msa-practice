@@ -9,10 +9,5 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode
-public final class User {
-    private final String alias;
-
-    protected User() {
-        alias = null;
-    }
+public record User(String alias) {
 }
