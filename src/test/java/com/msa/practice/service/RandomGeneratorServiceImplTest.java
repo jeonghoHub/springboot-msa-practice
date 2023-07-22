@@ -8,12 +8,12 @@ import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class RandomGeneratorServiceImplTest {
-    private RandomGeneratorServiceImpl randomGeneratorServiceImpl;
+class RandomGeneratorServiceImplTest {
+    private RandomGeneratorService.RandomGeneratorServiceImpl randomGeneratorServiceImpl;
 
     @BeforeEach
     public void setUp() {
-        randomGeneratorServiceImpl = new RandomGeneratorServiceImpl();
+        randomGeneratorServiceImpl = new RandomGeneratorService.RandomGeneratorServiceImpl();
     }
 
     @Test
