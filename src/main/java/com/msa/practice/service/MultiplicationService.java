@@ -1,6 +1,7 @@
 package com.msa.practice.service;
 
 import com.msa.practice.domain.Multiplication;
+import com.msa.practice.domain.MultiplicationResultAttempt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +15,16 @@ public interface MultiplicationService {
 
     Multiplication createRandomMultiplication();
 
+    /**
+     * @return 곱셈 계산 결과가 맞으면 true, 아니면 false
+     */
+    boolean checkAttempt(final MultiplicationResultAttempt resultAttempt);
+
     @Service
     class MultiplicationServiceImpl implements MultiplicationService {
         private RandomGeneratorService randomGeneratorService;
+
+        @Autowired
         public MultiplicationServiceImpl(RandomGeneratorService randomGeneratorService) {
             this.randomGeneratorService = randomGeneratorService;
         }
@@ -26,6 +34,13 @@ public interface MultiplicationService {
             int factorA = randomGeneratorService.generateRandomFactor();
             int factorB = randomGeneratorService.generateRandomFactor();
             return new Multiplication(factorA, factorB);
+        }
+
+        @Override
+        public boolean checkAttempt(MultiplicationResultAttempt resultAttempt) {
+            return resultAttempt.resultAttempt() ==
+                   resultAttempt.multiplication().factorA() *
+                   resultAttempt.multiplication().factorB();
         }
     }
 }
