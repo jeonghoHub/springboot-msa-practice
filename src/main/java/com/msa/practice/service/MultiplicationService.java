@@ -2,6 +2,7 @@ package com.msa.practice.service;
 
 import com.msa.practice.domain.Multiplication;
 import com.msa.practice.domain.MultiplicationResultAttempt;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,13 +22,9 @@ public interface MultiplicationService {
     boolean checkAttempt(final MultiplicationResultAttempt resultAttempt);
 
     @Service
+    @RequiredArgsConstructor
     class MultiplicationServiceImpl implements MultiplicationService {
-        private RandomGeneratorService randomGeneratorService;
-
-        @Autowired
-        public MultiplicationServiceImpl(RandomGeneratorService randomGeneratorService) {
-            this.randomGeneratorService = randomGeneratorService;
-        }
+        private final RandomGeneratorService randomGeneratorService;
 
         @Override
         public Multiplication createRandomMultiplication() {
